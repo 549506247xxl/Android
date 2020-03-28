@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">HelloWorld</string>
+    <string name="fuck">按钮</string>
+    <string name="cuk">Button</string>
+    <string name="checkbox">CheckBox</string>
+    <string name="passwd">请输入登录密码</string>
+</resources>
