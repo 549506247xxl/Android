@@ -1,6 +1,7 @@
 package chapter.android.aweme.ss.com.homework;
 
 import android.support.annotation.NonNull;
+
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +26,6 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public MyAdapter(int mNumberItems, List<Message> news){
         this.mNumberItems = mNumberItems;
         this.news = news;
-
     }
 
     @NonNull
@@ -37,13 +37,6 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         // RecyclerView.ViewHolder是个抽象类，我们需要继承这个类，实现自己的Holder
         RecyclerView.ViewHolder holder = new MyViewHolder(v);
 
-        //设置监听事件
-//        v.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                System.out.println("click on view");
-//            }
-//        });
 
         return holder;
     }
@@ -55,7 +48,19 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         ((MyViewHolder) holder).title.setText(message.getTitle());
         ((MyViewHolder) holder).time.setText(message.getTime());
         ((MyViewHolder) holder).description.setText(message.getDescription());
-      //  ((MyViewHolder) holder).icon
+        int IconID = 0;
+        switch (message.getIcon()){
+            case "TYPE_ROBOT":    IconID = R.drawable.session_robot; break;
+            case "TYPE_GAME":     IconID = R.drawable.icon_micro_game_comment; break;
+            case "TYPE_SYSTEM":   IconID = R.drawable.session_system_notice; break;
+            case "TYPE_STRANGER": IconID = R.drawable.session_stranger; break;
+            case "TYPE_USER":     IconID = R.drawable.icon_girl; break;
+
+        }
+        ((MyViewHolder) holder).icon.setImageResource(IconID);
+
+
+
         int vis = message.isOfficial()? ImageView.VISIBLE: ImageView.INVISIBLE;
         ((MyViewHolder) holder).isOfficial.setVisibility(vis);
 
@@ -72,7 +77,6 @@ class MyViewHolder extends RecyclerView.ViewHolder{
     public TextView time;
     public ImageView isOfficial;
     public CircleImageView icon;
-
     public MyViewHolder(@NonNull View itemView) {
         super(itemView);
 

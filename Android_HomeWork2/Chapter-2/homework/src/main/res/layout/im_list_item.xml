@@ -25,7 +25,7 @@
             android:layout_height="48dp"
 
             android:scaleType="centerCrop"
-            android:src="@drawable/icon_girl" />
+            android:src="@drawable/session_stranger" />
 
         <ImageView
             android:id="@+id/robot_notice"
